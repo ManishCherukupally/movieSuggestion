@@ -53,19 +53,20 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend address
     "http://192.168.0.129",  # Add other allowed origins if needed
+    "http://192.168.1.109",  # manish
 ]
-
+CORS_ALLOW_CREDENTIALS=True
 
 ROOT_URLCONF = 'movies_rc.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR,'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -91,9 +92,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'movies_db',  # change it databasename
         'USER': 'postgres',  # change it database username
-        'PASSWORD': '6304882347',  # change user database password
+        'PASSWORD': 'Manish@556',  # change user database password
         # 'HOST': '192.168.29.185',
-        'HOST': '192.168.0.129',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
@@ -136,6 +137,12 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,"media")
+
+print(os.path.join(BASE_DIR, 'build'))
+STATICFILES_DIRS=[
+    os.path.join(BASE_DIR, 'build'),
+
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
