@@ -59,6 +59,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://192.168.0.129:3000",  # Add other allowed origins if needed
     "http://192.168.1.109:3000",  # manish
     "http://192.168.29.220:3000",  # neeraj
+    "http://192.168.29.74:3000",  # manish
 ]
 CORS_ALLOW_CREDENTIALS=True
 
@@ -93,7 +94,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'movies_db',  # change it databasename
         'USER': 'postgres',  # change it database username
-        'PASSWORD': 'Manish@556',  # change user database password
+        # 'PASSWORD': 'Manish@556',  # change user database password
+        'PASSWORD': '1234',  # change user database password
         # 'HOST': '192.168.29.185',
         'HOST': 'localhost',
         'PORT': '5432',
