@@ -56,8 +56,8 @@ MIDDLEWARE = [
 # CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend address
-    "http://192.168.0.129",  # Add other allowed origins if needed
-    "http://192.168.1.109",  # manish
+    "http://192.168.0.129:3000",  # Add other allowed origins if needed
+    "http://192.168.1.109:3000",  # manish
 ]
 CORS_ALLOW_CREDENTIALS=True
 
@@ -140,10 +140,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR,"media")
 
 print(os.path.join(BASE_DIR, 'build'))
 STATICFILES_DIRS=[
-    os.path.join(BASE_DIR, 'build'),
+    os.path.join(BASE_DIR, 'build/static'),
 
 ]
 
+
+# STATIC_ROOT= os.path.join(BASE_DIR, 'build/static')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

@@ -19,7 +19,8 @@ def register_view(request):
         if serializer.is_valid():
             serializer.save()
             return Response({"status": "User_created_successfully!"}, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return JsonResponse({"status": "already_registered!"})
 
 
 
@@ -48,24 +49,24 @@ from collections import defaultdict
 
 @api_view(['GET'])
 def movies_view(request):
-    if request.user.is_authenticated:
-        # Retrieve all movies
-        movies_list = Movies.objects.all()
+    # if request.user.is_authenticated:
+    # Retrieve all movies
+    movies_list = Movies.objects.all()
 
-        # Group movies by their type directly
-        movies_by_type = defaultdict(list)
-        for movie in movies_list:
-            # Group movies by their original type
-            movies_by_type[movie.type].append(MovieSerializer(movie).data)
+    # Group movies by their type directly
+    movies_by_type = defaultdict(list)
+    for movie in movies_list:
+        # Group movies by their original type
+        movies_by_type[movie.type].append(MovieSerializer(movie).data)
 
-        # Convert defaultdict to a regular dictionary for the response
-        response_data = {
-            "movies": dict(movies_by_type)  # Wrap the result in the "movies" key
-        }
+    # Convert defaultdict to a regular dictionary for the response
+    response_data = {
+        "movies": dict(movies_by_type)  # Wrap the result in the "movies" key
+    }
 
-        return Response(response_data)
-    else:
-        return JsonResponse({"status": "unauthorized_user"}, status=status.HTTP_401_UNAUTHORIZED)
+    return Response(response_data)
+    # else:
+    #     return JsonResponse({"status": "unauthorized_user"}, status=status.HTTP_401_UNAUTHORIZED)
 
 
 @api_view(['POST'])
