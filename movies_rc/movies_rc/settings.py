@@ -58,6 +58,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # Frontend address
     "http://192.168.0.129:3000",  # Add other allowed origins if needed
     "http://192.168.1.109:3000",  # manish
+    "http://192.168.29.220:3000",  # neeraj
 ]
 CORS_ALLOW_CREDENTIALS=True
 
